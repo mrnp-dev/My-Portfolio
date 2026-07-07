@@ -18,12 +18,14 @@
   --serif: 'DM Serif Display', Georgia, serif;
   --sans: 'DM Sans', system-ui, sans-serif;
   --mono: 'JetBrains Mono', 'Courier New', monospace;
+  --content-width: min(70vw, 1180px);
+  --content-padding: 56px;
 
   color: var(--ink);
   background: var(--bg);
   font-family: var(--sans);
-  font-size: 15px;
-  line-height: 1.65;
+  font-size: 16px;
+  line-height: 1.7;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

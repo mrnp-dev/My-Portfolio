@@ -8,7 +8,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 22px 48px;
+  padding: 24px 64px;
   background: rgba(247, 247, 245, 0.88);
   border-bottom: 1px solid transparent;
   backdrop-filter: blur(12px);
@@ -22,7 +22,7 @@
 .nav-logo {
   color: var(--ink);
   font-family: var(--mono);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-decoration: none;
@@ -30,13 +30,13 @@
 
 .nav-links {
   display: flex;
-  gap: 32px;
+  gap: 36px;
   list-style: none;
 }
 
 .nav-links a {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.02em;
   text-decoration: none;
   transition: color 0.2s;
@@ -48,9 +48,9 @@
 }
 
 main section {
-  max-width: 860px;
+  width: var(--content-width);
   margin: 0 auto;
-  padding: 120px 48px;
+  padding: 128px var(--content-padding);
 }
 
 main section + section {
@@ -83,7 +83,7 @@ main section + section {
 .hero-eyebrow {
   margin-bottom: 24px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -91,7 +91,7 @@ main section + section {
 .hero-name {
   color: var(--ink);
   font-family: var(--serif);
-  font-size: clamp(42px, 7vw, 72px);
+  font-size: clamp(52px, 7vw, 84px);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.08;
@@ -114,10 +114,10 @@ main section + section {
 }
 
 .hero-tagline {
-  max-width: 460px;
-  margin-top: 32px;
+  max-width: 620px;
+  margin-top: 34px;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.75;
 }
 
@@ -144,7 +144,7 @@ main section + section {
   background: var(--ink);
   color: var(--bg);
   cursor: pointer;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   letter-spacing: 0.03em;
   text-decoration: none;
@@ -159,7 +159,7 @@ main section + section {
   border-bottom: 1px solid var(--rule);
   padding-bottom: 1px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 15px;
   text-decoration: none;
   transition: color 0.2s, border-color 0.2s;
 }
@@ -176,7 +176,7 @@ main section + section {
   margin-top: 72px;
   color: var(--rule);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.08em;
 }
 
@@ -203,7 +203,7 @@ main section + section {
   gap: 14px;
   margin-bottom: 40px;
   color: var(--accent);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -220,22 +220,22 @@ main section + section {
   margin-bottom: 16px;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: clamp(28px, 4vw, 38px);
+  font-size: clamp(34px, 4vw, 48px);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1.15;
 }
 
 .section-sub {
-  max-width: 480px;
-  margin-bottom: 56px;
+  max-width: 640px;
+  margin-bottom: 60px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 17px;
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: minmax(0, 1fr) 260px;
   gap: 48px 64px;
   align-items: start;
   margin-top: 48px;
@@ -244,7 +244,7 @@ main section + section {
 .about-body p {
   margin-bottom: 18px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.85;
 }
 
@@ -258,7 +258,7 @@ main section + section {
   background: #d9d9d9;
   color: #999999;
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   text-align: center;
 }
@@ -282,14 +282,14 @@ main section + section {
 .skill-cat-label {
   margin-bottom: 6px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .fact-value {
   color: var(--ink);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -330,7 +330,7 @@ main section + section {
   background: var(--accent-lt);
   color: var(--ink);
   font-family: var(--mono);
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 0.02em;
 }
 
@@ -370,7 +370,7 @@ main section + section {
 .project-hero-label {
   color: rgba(0, 0, 0, 0.35);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -393,7 +393,7 @@ main section + section {
   background: #e2e2e0;
   color: rgba(0, 0, 0, 0.3);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-align: center;
   text-transform: uppercase;
@@ -424,7 +424,7 @@ main section + section {
 .project-meta-row {
   margin-bottom: 8px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -432,7 +432,7 @@ main section + section {
 .project-name {
   color: var(--ink);
   font-family: var(--serif);
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 400;
   line-height: 1.15;
 }
@@ -440,7 +440,7 @@ main section + section {
 .project-status {
   flex-shrink: 0;
   padding: 5px 10px;
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -461,7 +461,7 @@ main section + section {
 .project-desc {
   margin-bottom: 20px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.8;
 }
 
@@ -475,7 +475,7 @@ main section + section {
   margin-bottom: 6px;
   padding-left: 16px;
   color: var(--muted);
-  font-size: 13.5px;
+  font-size: 15px;
   line-height: 1.7;
 }
 
@@ -505,7 +505,7 @@ main section + section {
   border: 1px solid var(--rule);
   padding: 3px 9px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -515,7 +515,7 @@ main section + section {
   padding-bottom: 1px;
   color: var(--accent);
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   text-decoration: none;
   text-transform: uppercase;
@@ -541,7 +541,7 @@ main section + section {
 .timeline-date {
   padding-top: 4px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.08em;
   white-space: nowrap;
 }
@@ -556,13 +556,13 @@ main section + section {
 .timeline-org {
   margin-bottom: 10px;
   color: var(--accent);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
 }
 
 .timeline-desc {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.75;
 }
 
@@ -583,7 +583,7 @@ main section + section {
 .cert-issuer {
   margin-bottom: 8px;
   color: var(--accent);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -591,14 +591,14 @@ main section + section {
 .cert-name {
   margin-bottom: 4px;
   color: var(--ink);
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   line-height: 1.4;
 }
 
 .cert-date {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 #contact {
@@ -616,7 +616,7 @@ main section + section {
   margin-bottom: 16px;
   color: var(--ink);
   font-family: var(--serif);
-  font-size: clamp(24px, 3.5vw, 34px);
+  font-size: clamp(30px, 3.5vw, 42px);
   font-weight: 400;
   line-height: 1.25;
 }
@@ -642,7 +642,7 @@ main section + section {
 
 .contact-row-label {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -666,18 +666,18 @@ main section + section {
 
 footer {
   display: flex;
-  max-width: 860px;
+  width: var(--content-width);
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   border-top: 1px solid var(--rule);
   margin: 0 auto;
-  padding: 28px 48px;
+  padding: 32px var(--content-padding);
 }
 
 .footer-copy {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.06em;
 }
 
@@ -689,7 +689,7 @@ footer {
 
 .footer-links a {
   color: var(--muted);
-  font-size: 12px;
+  font-size: 13px;
   text-decoration: none;
   transition: color 0.2s;
 }
@@ -723,10 +723,11 @@ footer {
   }
 
   .nav-links a {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   main section {
+    width: 100%;
     padding: 80px 24px;
   }
 
@@ -793,6 +794,7 @@ footer {
   }
 
   footer {
+    width: 100%;
     flex-direction: column;
     padding-right: 24px;
     padding-left: 24px;
