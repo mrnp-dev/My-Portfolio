@@ -4,7 +4,7 @@ const REVEAL_OPTIONS: IntersectionObserverInit = {
   threshold: 0.08,
 }
 
-export function useRevealOnScroll(selector = '.reveal', visibleClassName = 'visible') {
+export function useRevealOnScroll(selector = '.reveal, main section', visibleClassName = 'visible') {
   useEffect(() => {
     const observer = new IntersectionObserver((entries, currentObserver) => {
       entries.forEach((entry) => {

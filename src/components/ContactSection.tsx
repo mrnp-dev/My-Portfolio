@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { ContactLink } from '../data/portfolio'
 import { SectionHeading } from './SectionHeading'
 
@@ -28,12 +29,30 @@ export function ContactSection({ links }: ContactSectionProps) {
 }
 
 function ContactRow({ link }: { link: ContactLink }) {
+  const [copyState, setCopyState] = useState<'idle' | 'copied'>('idle')
+  const canCopy = link.href.startsWith('mailto:') || link.href.startsWith('tel:')
+
+  async function copyLinkValue() {
+    const copyValue = link.href.replace(/^mailto:|^tel:/, '')
+
+    await navigator.clipboard.writeText(copyValue)
+    setCopyState('copied')
+    window.setTimeout(() => setCopyState('idle'), 1600)
+  }
+
   return (
     <div className="contact-row">
       <span className="contact-row-label">{link.label}</span>
-      <ExternalAwareLink className="contact-row-value" href={link.href}>
-        {link.value}
-      </ExternalAwareLink>
+      <span className="contact-row-action">
+        <ExternalAwareLink className="contact-row-value" href={link.href}>
+          {link.value}
+        </ExternalAwareLink>
+        {canCopy && (
+          <button className="contact-copy" onClick={copyLinkValue} type="button">
+            {copyState === 'copied' ? 'Copied' : 'Copy'}
+          </button>
+        )}
+      </span>
     </div>
   )
 }

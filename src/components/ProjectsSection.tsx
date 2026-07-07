@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Project } from '../data/portfolio'
 import { SectionHeading } from './SectionHeading'
 
@@ -6,6 +7,9 @@ type ProjectsSectionProps = {
 }
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
+  const [activeProjectName, setActiveProjectName] = useState(projects[0]?.name ?? '')
+  const activeProject = projects.find((project) => project.name === activeProjectName) ?? projects[0]
+
   return (
     <section id="projects">
       <SectionHeading
@@ -13,67 +17,70 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         title="Things I've built."
         subtitle="Client work, research, and personal projects, all shipped or in active development."
       />
-      {projects.map((project) => (
-        <ProjectCard project={project} key={project.name} />
-      ))}
+      {projects.length > 0 && (
+        <div className="project-index reveal">
+          <div className="project-index-list" aria-label="Project index">
+            {projects.map((project, index) => (
+              <ProjectIndexRow
+                index={index}
+                isActive={project.name === activeProject.name}
+                key={project.name}
+                onFocus={() => setActiveProjectName(project.name)}
+                onPointerEnter={() => setActiveProjectName(project.name)}
+                project={project}
+              />
+            ))}
+          </div>
+          <ProjectIndexPreview project={activeProject} />
+        </div>
+      )}
     </section>
   )
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectIndexRow({
+  index,
+  isActive,
+  onFocus,
+  onPointerEnter,
+  project,
+}: {
+  index: number
+  isActive: boolean
+  onFocus: () => void
+  onPointerEnter: () => void
+  project: Project
+}) {
   return (
-    <article className="project-card reveal">
-      <ProjectPreview project={project} />
-      <div className="project-body">
-        <div className="project-top">
-          <div>
-            <p className="project-meta-row">{project.meta}</p>
-            <h3 className="project-name">{project.name}</h3>
-          </div>
-          <span className={`project-status ${project.status}`}>{project.statusLabel}</span>
-        </div>
-        <p className="project-desc">{project.description}</p>
-        <ul className="project-highlights">
-          {project.highlights.map((highlight) => (
-            <li key={highlight}>{highlight}</li>
-          ))}
-        </ul>
-        <div className="project-footer">
-          <TagList className="project-stack" itemClassName="project-tag" items={project.stack} />
-          <a href="#contact" className="project-link">
-            Ask about it ↗
-          </a>
-        </div>
-      </div>
-    </article>
+    <a
+      className={isActive ? 'project-index-row active' : 'project-index-row'}
+      href="#contact"
+      onFocus={onFocus}
+      onPointerEnter={onPointerEnter}
+    >
+      <span className="project-index-number">{String(index + 1).padStart(2, '0')}</span>
+      <span className="project-index-main">
+        <span className="project-index-name">{project.name}</span>
+        <span className="project-index-meta">{project.meta}</span>
+      </span>
+      <span className={`project-status ${project.status}`}>{project.statusLabel}</span>
+    </a>
   )
 }
 
-function ProjectPreview({ project }: { project: Project }) {
+function ProjectIndexPreview({ project }: { project: Project }) {
   return (
-    <>
-      <div className="project-hero-img">
-        <span className="project-hero-label">{project.previewLabel}</span>
-      </div>
-      <div className="project-sub-strip">
-        {project.previewShots.map((shot) => (
-          <div className="project-sub-img" key={shot}>
-            <span>{shot}</span>
-          </div>
+    <aside className="project-index-preview" aria-label={`${project.name} preview`}>
+      <p className="project-preview-label">Selected project</p>
+      <h3 className="project-preview-name">{project.name}</h3>
+      <p className="project-preview-desc">{project.description}</p>
+      <div className="project-preview-stack">
+        {project.stack.map((technology) => (
+          <span className="project-tag" key={technology}>
+            {technology}
+          </span>
         ))}
       </div>
-    </>
-  )
-}
-
-function TagList({ className, itemClassName, items }: { className: string; itemClassName: string; items: string[] }) {
-  return (
-    <div className={className}>
-      {items.map((item) => (
-        <span className={itemClassName} key={item}>
-          {item}
-        </span>
-      ))}
-    </div>
+    </aside>
   )
 }
