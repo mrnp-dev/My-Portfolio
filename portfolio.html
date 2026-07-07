@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mark Rey Niño Pascual — CS Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F7F7F5;
+      --ink:       #111111;
+      --muted:     #6B6B6B;
+      --rule:      #E0E0E0;
+      --accent:    #2A5EF5;
+      --accent-lt: #EEF1FE;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+      --mono:      'JetBrains Mono', 'Courier New', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 48px;
+      background: rgba(247,247,245,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s;
+    }
+    nav.scrolled { border-bottom-color: var(--rule); }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: .02em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── SECTIONS ── */
+    section { padding: 120px 48px; max-width: 860px; margin: 0 auto; }
+    section + section { padding-top: 80px; }
+
+    /* ── HERO ── */
+    #hero {
+      padding-top: 180px;
+      padding-bottom: 100px;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.08;
+      letter-spacing: -.01em;
+      color: var(--ink);
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: .85em;
+      background: var(--accent);
+      vertical-align: middle;
+      margin-left: 4px;
+      animation: blink 1.1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .hero-tagline {
+      margin-top: 32px;
+      max-width: 460px;
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .hero-tagline strong { color: var(--ink); font-weight: 500; }
+
+    .hero-cta {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      background: var(--ink);
+      color: var(--bg);
+      border: none;
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: .03em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: .75; }
+
+    .btn-ghost {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 1px;
+      transition: color .2s, border-color .2s;
+    }
+    .btn-ghost:hover { color: var(--ink); border-color: var(--ink); }
+
+    .scroll-hint {
+      margin-top: 72px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--rule);
+    }
+    .scroll-hint::before {
+      content: '';
+      display: block;
+      width: 1px;
+      height: 40px;
+      background: var(--rule);
+    }
+
+    /* ── SECTION HEADERS ── */
+    .section-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+      max-width: 80px;
+    }
+
+    .section-heading {
+      font-family: var(--serif);
+      font-size: clamp(28px, 4vw, 38px);
+      line-height: 1.15;
+      letter-spacing: -.01em;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 15px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 56px;
+    }
+
+    /* ── ABOUT ── */
+    #about { border-top: 1px solid var(--rule); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 48px 64px;
+      margin-top: 48px;
+      align-items: start;
+    }
+
+    .about-body p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.85;
+      margin-bottom: 18px;
+    }
+    .about-body p strong { color: var(--ink); font-weight: 500; }
+
+    .photo-placeholder {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: #D9D9D9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #999;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .about-facts {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 8px;
+    }
+    .fact {
+      background: var(--bg);
+      padding: 24px 20px;
+    }
+    .fact-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .fact-value {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* ── SKILLS ── */
+    #skills { border-top: 1px solid var(--rule); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      border: 1px solid var(--rule);
+      margin-top: 16px;
+    }
+
+    .skill-category {
+      padding: 28px 28px 32px;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .skill-category:nth-child(2n) { border-right: none; }
+    .skill-category:nth-last-child(-n+2) { border-bottom: none; }
+
+    .skill-cat-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--ink);
+      background: var(--accent-lt);
+      padding: 5px 11px;
+      letter-spacing: .02em;
+    }
+    .tag.soft {
+      background: transparent;
+      border: 1px solid var(--rule);
+      color: var(--muted);
+    }
+
+    /* ── PROJECTS ── */
+    #projects { border-top: 1px solid var(--rule); }
+
+    /* Project card: big featured layout */
+    .project-card {
+      border: 1px solid var(--rule);
+      margin-bottom: 48px;
+      overflow: hidden;
+      transition: box-shadow .25s;
+    }
+    .project-card:hover { box-shadow: 0 4px 32px rgba(0,0,0,.07); }
+
+    /* Main hero image */
+    .project-hero-img {
+      width: 100%;
+      aspect-ratio: 16/8;
+      background: #D0D0CE;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Coloured tint per project */
+    .project-card:nth-child(1) .project-hero-img { background: #D6DFF7; }
+    .project-card:nth-child(2) .project-hero-img { background: #D7EDD6; }
+    .project-card:nth-child(3) .project-hero-img { background: #F2E8D6; }
+    .project-card:nth-child(4) .project-hero-img { background: #E8D6F2; }
+
+    .project-hero-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,.35);
+    }
+
+    /* Sub-image strip */
+    .project-sub-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border-top: 1px solid var(--rule);
+    }
+
+    .project-sub-img {
+      aspect-ratio: 4/3;
+      background: #E2E2E0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      color: rgba(0,0,0,.3);
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Tinted sub-images */
+    .project-card:nth-child(1) .project-sub-img { background: #C7D3F2; }
+    .project-card:nth-child(2) .project-sub-img { background: #C5E0C4; }
+    .project-card:nth-child(3) .project-sub-img { background: #EAD9C0; }
+    .project-card:nth-child(4) .project-sub-img { background: #DEC5EE; }
+
+    /* Subtle inner label */
+    .project-sub-img span {
+      background: rgba(255,255,255,.5);
+      padding: 3px 8px;
+    }
+
+    /* Text area */
+    .project-body {
+      padding: 32px 36px 36px;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .project-meta-row {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .project-name {
+      font-family: var(--serif);
+      font-size: 26px;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+
+    .project-status {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .project-status.wip {
+      background: #FFF4CC;
+      color: #7A5C00;
+      border: 1px solid #F0DC82;
+    }
+    .project-status.done {
+      background: var(--accent-lt);
+      color: var(--accent);
+      border: 1px solid #C5D0FA;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .project-highlights {
+      list-style: none;
+      margin-bottom: 24px;
+    }
+    .project-highlights li {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.7;
+      padding-left: 16px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+    .project-highlights li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-family: var(--mono);
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      padding-top: 20px;
+      border-top: 1px solid var(--rule);
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .project-tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--rule);
+      padding: 3px 9px;
+    }
+
+    .project-link {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--accent);
+      text-decoration: none;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--accent-lt);
+      padding-bottom: 1px;
+      transition: border-color .2s;
+    }
+    .project-link:hover { border-color: var(--accent); }
+
+    /* ── EXPERIENCE ── */
+    #experience { border-top: 1px solid var(--rule); }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 24px 40px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .timeline-item:first-child { border-top: 1px solid var(--rule); }
+
+    .timeline-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .08em;
+      color: var(--muted);
+      padding-top: 4px;
+      white-space: nowrap;
+    }
+
+    .timeline-role {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .timeline-org {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ── CERTS ── */
+    #certs { border-top: 1px solid var(--rule); }
+
+    .cert-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 16px;
+    }
+    .cert-item {
+      background: var(--bg);
+      padding: 24px 24px 28px;
+    }
+    .cert-issuer {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .cert-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .cert-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      border-top: 1px solid var(--rule);
+      padding-bottom: 140px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .contact-headline {
+      font-family: var(--serif);
+      font-size: clamp(24px, 3.5vw, 34px);
+      line-height: 1.25;
+      color: var(--ink);
+      margin-bottom: 16px;
+    }
+    .contact-text {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .contact-row { display: flex; flex-direction: column; gap: 4px; }
+    .contact-row-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .contact-row-value {
+      font-size: 15px;
+      color: var(--ink);
+      text-decoration: none;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: 2px;
+      display: inline-block;
+      transition: color .2s, border-color .2s;
+    }
+    .contact-row-value:hover { color: var(--accent); border-color: var(--accent); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 28px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .06em;
+      color: var(--muted);
+    }
+    .footer-links { display: flex; gap: 24px; list-style: none; }
+    .footer-links a {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 640px) {
+      nav { padding: 18px 24px; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 12px; }
+
+      section { padding: 80px 24px; }
+      #hero { padding-top: 130px; padding-bottom: 60px; }
+
+      .about-grid { grid-template-columns: 1fr; }
+      .about-facts { grid-template-columns: 1fr 1fr; }
+      .about-facts .fact:last-child { grid-column: 1 / -1; }
+
+      .skills-grid { grid-template-columns: 1fr; }
+      .skill-category { border-right: none; }
+      .skill-category:nth-last-child(-n+2) { border-bottom: 1px solid var(--rule); }
+      .skill-category:last-child { border-bottom: none; }
+
+      .project-sub-strip { grid-template-columns: repeat(3, 1fr); }
+      .project-body { padding: 24px 20px 28px; }
+      .project-top { flex-direction: column; align-items: flex-start; }
+
+      .timeline-item { grid-template-columns: 1fr; gap: 6px; }
+
+      .cert-list { grid-template-columns: 1fr; }
+      .cert-item:not(:last-child) { border-bottom: 1px solid var(--rule); }
+
+      .contact-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 16px; text-align: center; }
+      .footer-links { gap: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .cursor { animation: none; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">mrnp.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certs">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-eyebrow">Open to internships &amp; freelance opportunities</p>
+  <h1 class="hero-name">
+    Hi, I'm<br />Mark Rey Niño.<span class="cursor"></span>
+  </h1>
+  <p class="hero-tagline">
+    A <strong>4th-year Computer Science student</strong> at Pampanga State University — building full-stack web &amp; mobile apps, training ML models, and turning real problems into <strong>working software</strong>.
+  </p>
+  <div class="hero-cta">
+    <a href="#projects" class="btn-primary">See my work ↓</a>
+    <a href="#contact" class="btn-ghost">Get in touch</a>
+  </div>
+  <p class="scroll-hint">scroll</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">01 — About</p>
+  <div class="about-grid">
+    <div class="about-body reveal">
+      <p>
+        I'm Mark, a CS student based in <strong>San Fernando, Pampanga, Philippines</strong>. I build full-stack web applications, cross-platform mobile apps, and machine learning systems — often all three at once.
+      </p>
+      <p>
+        What sets me apart is that I've shipped <strong>real software for real clients</strong> while still in school. From a commercial Android gym management app to a tourism platform built in partnership with the <strong>Department of Tourism</strong>, my projects go beyond coursework.
+      </p>
+      <p>
+        Outside of code I volunteer with <strong>DEVCON Kids Pampanga</strong>, teaching robotics and programming to young learners — because the best way to solidify what you know is to teach it.
+      </p>
+    </div>
+    <div class="reveal">
+      <div class="photo-placeholder">YOUR PHOTO HERE</div>
+    </div>
+    <div class="about-facts reveal">
+      <div class="fact">
+        <p class="fact-label">Currently</p>
+        <p class="fact-value">4th Year, BSCS</p>
+      </div>
+      <div class="fact">
+        <p class="fact-label">University</p>
+        <p class="fact-value">Pampanga State University</p>
+      </div>
+      <div class="fact">
+        <p class="fact-label">Graduation</p>
+        <p class="fact-value">Expected Aug 2027</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">02 — Skills</p>
+  <h2 class="section-heading">What I work with.</h2>
+  <p class="section-sub">Languages, frameworks, tools, and platforms I'm comfortable shipping with.</p>
+
+  <div class="skills-grid reveal">
+    <div class="skill-category">
+      <p class="skill-cat-label">Languages</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">JavaScript</span>
+        <span class="tag">Dart</span>
+        <span class="tag">PHP</span>
+        <span class="tag">SQL</span>
+        <span class="tag">C++</span>
+        <span class="tag">Java</span>
+        <span class="tag">HTML / CSS</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <p class="skill-cat-label">Frameworks &amp; Libraries</p>
+      <div class="skill-tags">
+        <span class="tag">Flutter</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">Tailwind CSS</span>
+        <span class="tag">scikit-learn</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <p class="skill-cat-label">Databases &amp; Tools</p>
+      <div class="skill-tags">
+        <span class="tag">MySQL</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">SQLite</span>
+        <span class="tag">Firebase</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Git</span>
+        <span class="tag">Docker</span>
+        <span class="tag">Linux</span>
+        <span class="tag">VS Code</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <p class="skill-cat-label">Soft Skills</p>
+      <div class="skill-tags">
+        <span class="tag soft">Leadership</span>
+        <span class="tag soft">Client Communication</span>
+        <span class="tag soft">Requirements Gathering</span>
+        <span class="tag soft">Technical Facilitation</span>
+        <span class="tag soft">Public Speaking</span>
+        <span class="tag soft">Community Outreach</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">03 — Projects</p>
+  <h2 class="section-heading">Things I've built.</h2>
+  <p class="section-sub">Client work, research, and personal projects — all shipped or in active development.</p>
+
+  <!-- Project 1: SANT:IO -->
+  <div class="project-card reveal">
+    <div class="project-hero-img">
+      <span class="project-hero-label">Main Preview — SANT:IO App</span>
+    </div>
+    <div class="project-sub-strip">
+      <div class="project-sub-img"><span>Swipe Discovery</span></div>
+      <div class="project-sub-img"><span>Itinerary Builder</span></div>
+      <div class="project-sub-img"><span>DOT Admin Dashboard</span></div>
+    </div>
+    <div class="project-body">
+      <div class="project-top">
+        <div>
+          <p class="project-meta-row">Tourism Platform · Flutter + Python · 2025 – Present</p>
+          <h3 class="project-name">SANT:IO</h3>
+        </div>
+        <span class="project-status wip">In Progress</span>
+      </div>
+      <p class="project-desc">
+        A tourism discovery platform for Central Luzon, built in partnership with provincial and regional Department of Tourism offices. Think Tinder for destinations — swipe to explore, build itineraries, and leave reviews.
+      </p>
+      <ul class="project-highlights">
+        <li>Engineered and personally trained a machine learning recommendation model in Python that powers destination suggestions based on user preferences and liked places.</li>
+        <li>Built a FastAPI backend serving the ML model as a REST API, deployed on a VPS.</li>
+        <li>Developing a three-platform ecosystem: mobile app, a destination management portal for business owners, and a DOT admin dashboard per province to approve listings.</li>
+        <li>Features include swipe-based discovery, browsable catalogue with filtering, itinerary generation, and a user review &amp; rating system.</li>
+      </ul>
+      <div class="project-footer">
+        <div class="project-stack">
+          <span class="project-tag">Flutter</span>
+          <span class="project-tag">Supabase</span>
+          <span class="project-tag">PostgreSQL</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">FastAPI</span>
+          <span class="project-tag">Machine Learning</span>
+          <span class="project-tag">VPS</span>
+        </div>
+        <a href="#" class="project-link">View Project ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 2: Carlos Fitness -->
+  <div class="project-card reveal">
+    <div class="project-hero-img">
+      <span class="project-hero-label">Main Preview — Gym Management Dashboard</span>
+    </div>
+    <div class="project-sub-strip">
+      <div class="project-sub-img"><span>Staff Tablet App</span></div>
+      <div class="project-sub-img"><span>Member Digital ID</span></div>
+      <div class="project-sub-img"><span>Membership CRUD</span></div>
+    </div>
+    <div class="project-body">
+      <div class="project-top">
+        <div>
+          <p class="project-meta-row">Commercial Client Project · Flutter + Firebase · 2024</p>
+          <h3 class="project-name">Carlos Fitness Membership Management System</h3>
+        </div>
+        <span class="project-status done">Shipped</span>
+      </div>
+      <p class="project-desc">
+        A dual-app Android solution for a paying business client — digitizing a previously paper-based gym membership system into a professional, offline-capable management tool.
+      </p>
+      <ul class="project-highlights">
+        <li>Developed a tablet-based gym management app for staff handling full CRUD operations on memberships, replacing paper records entirely.</li>
+        <li>Built a companion member-facing app that displays membership status and serves as a digital gym ID.</li>
+        <li>Implemented a hybrid offline-first architecture using Firebase Firestore for cloud sync and SQLite for local storage — full functionality survives internet outages.</li>
+        <li>Followed formal requirements gathering, documentation, and SDLC practices from contract to delivery.</li>
+      </ul>
+      <div class="project-footer">
+        <div class="project-stack">
+          <span class="project-tag">Flutter</span>
+          <span class="project-tag">Firebase Firestore</span>
+          <span class="project-tag">SQLite</span>
+          <span class="project-tag">Android</span>
+          <span class="project-tag">Git</span>
+        </div>
+        <a href="#" class="project-link">View Project ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 3: Hirenorian -->
+  <div class="project-card reveal">
+    <div class="project-hero-img">
+      <span class="project-hero-label">Main Preview — Hirenorian Portal</span>
+    </div>
+    <div class="project-sub-strip">
+      <div class="project-sub-img"><span>Student Job Board</span></div>
+      <div class="project-sub-img"><span>Admin Analytics</span></div>
+      <div class="project-sub-img"><span>Company Portal</span></div>
+    </div>
+    <div class="project-body">
+      <div class="project-top">
+        <div>
+          <p class="project-meta-row">University Platform · PHP + MySQL · 2024</p>
+          <h3 class="project-name">Hirenorian — OJT &amp; Internship Matching Platform</h3>
+        </div>
+        <span class="project-status done">Shipped</span>
+      </div>
+      <p class="project-desc">
+        A multi-tiered job portal for Pampanga State University that matches students with partner OJT and internship opportunities — modelled after industrial job platforms like JobStreet.
+      </p>
+      <ul class="project-highlights">
+        <li>Developed three distinct user access levels: student applicants, external company partners, and university admin staff with real-time application tracking.</li>
+        <li>Architected and secure-coded backend PHP APIs integrated with a MySQL relational database.</li>
+        <li>Deployed the full-stack application on a VPS using Dokploy for automated container management and CI/CD.</li>
+      </ul>
+      <div class="project-footer">
+        <div class="project-stack">
+          <span class="project-tag">HTML / CSS / JS</span>
+          <span class="project-tag">Tailwind CSS</span>
+          <span class="project-tag">PHP</span>
+          <span class="project-tag">MySQL</span>
+          <span class="project-tag">Docker</span>
+          <span class="project-tag">VPS</span>
+          <span class="project-tag">Git</span>
+        </div>
+        <a href="#" class="project-link">View Project ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 4: BiteWise -->
+  <div class="project-card reveal">
+    <div class="project-hero-img">
+      <span class="project-hero-label">Main Preview — BiteWise Diet Tracker</span>
+    </div>
+    <div class="project-sub-strip">
+      <div class="project-sub-img"><span>Meal Log</span></div>
+      <div class="project-sub-img"><span>Food Database</span></div>
+      <div class="project-sub-img"><span>Calorie History</span></div>
+    </div>
+    <div class="project-body">
+      <div class="project-top">
+        <div>
+          <p class="project-meta-row">Personal Project · B4A + SQLite · 2023</p>
+          <h3 class="project-name">BiteWise — Offline Calorie Tracker</h3>
+        </div>
+        <span class="project-status done">Shipped</span>
+      </div>
+      <p class="project-desc">
+        A fully offline Android diet tracking app — no account, no internet, no excuses. Users log meals, monitor daily caloric intake, and browse a searchable food database entirely on-device.
+      </p>
+      <ul class="project-highlights">
+        <li>Designed and implemented a local SQLite database schema for meal logs, food entries, and historical calorie tracking data.</li>
+        <li>Structured the app using modular, event-driven patterns in Basic4Android, separating UI logic, database operations, and calorie calculations for maintainability.</li>
+        <li>Zero internet dependency — complete functionality stored and processed on-device.</li>
+      </ul>
+      <div class="project-footer">
+        <div class="project-stack">
+          <span class="project-tag">Basic4Android</span>
+          <span class="project-tag">SQLite</span>
+          <span class="project-tag">Android</span>
+        </div>
+        <a href="#" class="project-link">View Project ↗</a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">04 — Experience</p>
+  <h2 class="section-heading">Where I've been.</h2>
+  <p class="section-sub">Volunteer roles, community work, and organizations that shaped how I build and teach.</p>
+
+  <div class="timeline">
+
+    <div class="timeline-item reveal">
+      <p class="timeline-date">2025 – Present</p>
+      <div>
+        <p class="timeline-role">Associate Lead Learner &amp; Volunteer</p>
+        <p class="timeline-org">DEVCON Kids Pampanga</p>
+        <p class="timeline-desc">Facilitated 2 code camps teaching robotics and programming to young learners using Micro:bit. Attended regional workshops and helped coordinate learning materials for beginner sessions.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="timeline-date">2024</p>
+      <div>
+        <p class="timeline-role">Freelance Android Developer</p>
+        <p class="timeline-org">Carlos Fitness — San Fernando, Pampanga</p>
+        <p class="timeline-desc">Acquired through a Software Engineering course, developed and delivered a commercial dual-app Android solution for a paying gym business — from requirements gathering and documentation through to full deployment.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item reveal">
+      <p class="timeline-date">2024 – Present</p>
+      <div>
+        <p class="timeline-role">Lead Mobile Developer</p>
+        <p class="timeline-org">SANT:IO — DOT Central Luzon Partnership</p>
+        <p class="timeline-desc">Building a tourism discovery platform in collaboration with provincial and regional Department of Tourism offices. Responsible for the Flutter mobile app, ML recommendation model, and FastAPI backend infrastructure.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certs">
+  <p class="section-label">05 — Certifications</p>
+  <h2 class="section-heading">Continuing education.</h2>
+  <p class="section-sub">Courses and certificates I've completed outside of formal coursework.</p>
+
+  <div class="cert-list reveal">
+    <div class="cert-item">
+      <p class="cert-issuer">ASEAN Foundation / Google.org</p>
+      <p class="cert-name">AI Ready ASEAN — Certificate of Completion</p>
+      <p class="cert-date">May 2026 · 15 modules completed</p>
+    </div>
+    <div class="cert-item">
+      <p class="cert-issuer">DEVCON Kids Pampanga</p>
+      <p class="cert-name">Lead Learner Workshop Certificate</p>
+      <p class="cert-date">February 2026</p>
+    </div>
+    <div class="cert-item">
+      <p class="cert-issuer">Simplilearn</p>
+      <p class="cert-name">Programming with Python</p>
+      <p class="cert-date">December 2025</p>
+    </div>
+    <div class="cert-item">
+      <p class="cert-issuer">Pampanga State University</p>
+      <p class="cert-name">Bachelor of Science in Computer Science</p>
+      <p class="cert-date">Expected Aug 2027</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <p class="section-label">06 — Contact</p>
+  <div class="contact-grid">
+    <div class="reveal">
+      <h2 class="contact-headline">I'm happy to answer your next project. →</h2>
+      <p class="contact-text">Whether you need a mobile app, a web platform, or an ML-powered backend — or you're offering an internship — reach out. I respond within a day.</p>
+    </div>
+    <div class="contact-links reveal">
+      <div class="contact-row">
+        <span class="contact-row-label">Email</span>
+        <a href="mailto:pascualmarkreynino05@gmail.com" class="contact-row-value">pascualmarkreynino05@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-label">Phone</span>
+        <a href="tel:+639690550139" class="contact-row-value">(+63) 969-055-0139</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-label">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/mark-rey-niño-pascual-9b1252395" target="_blank" class="contact-row-value">mark-rey-niño-pascual</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-row-label">GitHub</span>
+        <a href="https://github.com/mrnp-dev" target="_blank" class="contact-row-value">github.com/mrnp-dev</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-copy">Mark Rey Niño R. Pascual — 2025</p>
+  <ul class="footer-links">
+    <li><a href="https://github.com/mrnp-dev" target="_blank">GitHub</a></li>
+    <li><a href="https://www.linkedin.com/in/mark-rey-niño-pascual-9b1252395" target="_blank">LinkedIn</a></li>
+  </ul>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => {
+          link.style.color = link.getAttribute('href') === '#' + entry.target.id
+            ? 'var(--ink)' : '';
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => sectionObserver.observe(s));
+</script>
+</body>
+</html>
