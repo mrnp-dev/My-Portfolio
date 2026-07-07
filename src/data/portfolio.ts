@@ -78,74 +78,7 @@ export const skillGroups: SkillGroup[] = [
   },
 ]
 
-export const projects: Project[] = [
-  {
-    name: 'SANT:IO',
-    meta: 'Tourism Platform · Flutter + Python · 2025-Present',
-    statusLabel: 'In Progress',
-    status: 'wip',
-    previewLabel: 'Main Preview · SANT:IO App',
-    previewShots: ['Swipe Discovery', 'Itinerary Builder', 'DOT Admin Dashboard'],
-    description:
-      'A tourism discovery platform for Central Luzon, built in partnership with provincial and regional Department of Tourism offices. Think Tinder for destinations: swipe to explore, build itineraries, and leave reviews.',
-    highlights: [
-      'Engineered and personally trained a machine learning recommendation model in Python that powers destination suggestions based on user preferences and liked places.',
-      'Built a FastAPI backend serving the ML model as a REST API, deployed on a VPS.',
-      'Developing a three-platform ecosystem: mobile app, a destination management portal for business owners, and a DOT admin dashboard per province to approve listings.',
-      'Features include swipe-based discovery, browsable catalogue with filtering, itinerary generation, and a user review and rating system.',
-    ],
-    stack: ['Flutter', 'Supabase', 'PostgreSQL', 'Python', 'FastAPI', 'Machine Learning', 'VPS'],
-  },
-  {
-    name: 'Carlos Fitness Membership Management System',
-    meta: 'Commercial Client Project · Flutter + Firebase · 2024',
-    statusLabel: 'Shipped',
-    status: 'done',
-    previewLabel: 'Main Preview · Gym Management Dashboard',
-    previewShots: ['Staff Tablet App', 'Member Digital ID', 'Membership CRUD'],
-    description:
-      'A dual-app Android solution for a paying business client, digitizing a previously paper-based gym membership system into a professional, offline-capable management tool.',
-    highlights: [
-      'Developed a tablet-based gym management app for staff handling full CRUD operations on memberships, replacing paper records entirely.',
-      'Built a companion member-facing app that displays membership status and serves as a digital gym ID.',
-      'Implemented a hybrid offline-first architecture using Firebase Firestore for cloud sync and SQLite for local storage.',
-      'Followed formal requirements gathering, documentation, and SDLC practices from contract to delivery.',
-    ],
-    stack: ['Flutter', 'Firebase Firestore', 'SQLite', 'Android', 'Git'],
-  },
-  {
-    name: 'Hirenorian - OJT & Internship Matching Platform',
-    meta: 'University Platform · PHP + MySQL · 2024',
-    statusLabel: 'Shipped',
-    status: 'done',
-    previewLabel: 'Main Preview · Hirenorian Portal',
-    previewShots: ['Student Job Board', 'Admin Analytics', 'Company Portal'],
-    description:
-      'A multi-tiered job portal for Pampanga State University that matches students with partner OJT and internship opportunities, modelled after industrial job platforms like JobStreet.',
-    highlights: [
-      'Developed three distinct user access levels: student applicants, external company partners, and university admin staff with real-time application tracking.',
-      'Architected and secure-coded backend PHP APIs integrated with a MySQL relational database.',
-      'Deployed the full-stack application on a VPS using Dokploy for automated container management and CI/CD.',
-    ],
-    stack: ['HTML / CSS / JS', 'Tailwind CSS', 'PHP', 'MySQL', 'Docker', 'VPS', 'Git'],
-  },
-  {
-    name: 'BiteWise - Offline Calorie Tracker',
-    meta: 'Personal Project · B4A + SQLite · 2023',
-    statusLabel: 'Shipped',
-    status: 'done',
-    previewLabel: 'Main Preview · BiteWise Diet Tracker',
-    previewShots: ['Meal Log', 'Food Database', 'Calorie History'],
-    description:
-      'A fully offline Android diet tracking app: no account, no internet, no excuses. Users log meals, monitor daily caloric intake, and browse a searchable food database entirely on-device.',
-    highlights: [
-      'Designed and implemented a local SQLite database schema for meal logs, food entries, and historical calorie tracking data.',
-      'Structured the app using modular, event-driven patterns in Basic4Android, separating UI logic, database operations, and calorie calculations for maintainability.',
-      'Zero internet dependency: complete functionality stored and processed on-device.',
-    ],
-    stack: ['Basic4Android', 'SQLite', 'Android'],
-  },
-]
+export const projects: Project[] = []
 
 export const experiences: Experience[] = [
   {
