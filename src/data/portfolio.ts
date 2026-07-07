@@ -1,6 +1,7 @@
-import aiReadyCertificateUrl from '../assets/certs/AICLASSASEAN - AI Training Certificate of Completion.pdf'
-import devconCertificateUrl from '../assets/certs/DEVCON Kids - Lead Learners Workshop Certificate of Completion.pdf'
-import pythonCertificateUrl from '../assets/certs/Simplilearn - Python Cerficate of Completion.pdf'
+import aiReadyCertificatePageOne from '../assets/certs/AICLASSASEAN - AI Training Certificate of Completion/AICLASSASEAN - AI Training Certificate of Completion-1.png'
+import aiReadyCertificatePageTwo from '../assets/certs/AICLASSASEAN - AI Training Certificate of Completion/AICLASSASEAN - AI Training Certificate of Completion-2.png'
+import devconCertificateImage from '../assets/certs/DEVCON Kids - Lead Learners Workshop Certificate of Completion/DEVCON Kids - Lead Learners Workshop Certificate of Completion-1.png'
+import pythonCertificateImage from '../assets/certs/Simplilearn - Python Cerficate of Completion/Simplilearn - Python Cerficate of Completion-1.png'
 
 export type NavItem = {
   label: string
@@ -38,7 +39,7 @@ export type Certification = {
   issuer: string
   name: string
   date: string
-  certificateUrl?: string
+  certificateImages?: string[]
 }
 
 export type ContactLink = {
@@ -114,19 +115,19 @@ export const certifications: Certification[] = [
     issuer: 'ASEAN Foundation / Google.org',
     name: 'AI Ready ASEAN - Certificate of Completion',
     date: 'May 2026 · 15 modules completed',
-    certificateUrl: aiReadyCertificateUrl,
+    certificateImages: [aiReadyCertificatePageOne, aiReadyCertificatePageTwo],
   },
   {
     issuer: 'DEVCON Kids Pampanga',
     name: 'Lead Learner Workshop Certificate',
     date: 'February 2026',
-    certificateUrl: devconCertificateUrl,
+    certificateImages: [devconCertificateImage],
   },
   {
     issuer: 'Simplilearn',
     name: 'Programming with Python',
     date: 'December 2025',
-    certificateUrl: pythonCertificateUrl,
+    certificateImages: [pythonCertificateImage],
   },
   {
     issuer: 'Pampanga State University',
