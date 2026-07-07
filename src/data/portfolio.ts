@@ -95,14 +95,14 @@ export const experiences: Experience[] = [
       'Facilitated 2 code camps teaching robotics and programming to young learners using Micro:bit. Attended regional workshops and helped coordinate learning materials for beginner sessions.',
   },
   {
-    date: '2024',
+    date: '2025-2026',
     role: 'Freelance Android Developer',
     organization: 'Carlos Fitness - San Fernando, Pampanga',
     description:
       'Acquired through a Software Engineering course, developed and delivered a commercial dual-app Android solution for a paying gym business from requirements gathering and documentation through to full deployment.',
   },
   {
-    date: '2024-Present',
+    date: '2025-Present',
     role: 'Lead Mobile Developer',
     organization: 'SANT:IO - DOT Central Luzon Partnership',
     description:
