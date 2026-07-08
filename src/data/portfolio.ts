@@ -26,6 +26,7 @@ export type Project = {
   description: string
   highlights: string[]
   stack: string[]
+  duration?: string
 }
 
 export type Experience = {
@@ -84,7 +85,72 @@ export const skillGroups: SkillGroup[] = [
   },
 ]
 
-export const projects: Project[] = []
+export const projects: Project[] = [
+  {
+    name: 'SANT:IO',
+    duration: '2025 - Present',
+    meta: 'Tourism Discovery Platform & ML Recommendation Engine',
+    status: 'wip',
+    statusLabel: 'In Progress, Expected Sept 2026',
+    previewLabel: 'Destination swipe discovery view',
+    previewShots: [],
+    description: 'A tourism discovery platform for Central Luzon in partnership with provincial and regional Department of Tourism offices.',
+    highlights: [
+      'Engineered a machine learning recommendation model in Python that powers personalized destination suggestions.',
+      'Designed and built a swipe-based destination recommendation system and a browsable directory with filters.',
+      'Constructed a three-platform ecosystem: a Flutter mobile app, a destination management portal for businesses, and a DOT admin dashboard.'
+    ],
+    stack: ['Flutter', 'Supabase', 'PostgreSQL', 'Python', 'FastAPI']
+  },
+  {
+    name: 'Carlos Fitness Membership System',
+    duration: '2025 - 2026',
+    meta: 'Dual-App Commercial Gym CRM & digital ID system',
+    status: 'done',
+    statusLabel: 'Completed',
+    previewLabel: 'Tablet gym manager interface',
+    previewShots: [],
+    description: 'Engineered a dual-app Android solution for a commercial gym business following formal software engineering requirements.',
+    highlights: [
+      'Developed a tablet-based gym management app for staff to handle full CRUD operations on memberships, digitizing a previously paper-based system.',
+      'Created a companion member-facing app that displays membership status and serves as a digital gym ID.',
+      'Implemented a hybrid offline-first database architecture using Firebase Firestore for cloud sync and SQLite for local storage.'
+    ],
+    stack: ['Flutter', 'Firebase', 'SQLite', 'Git']
+  },
+  {
+    name: 'Hirenorian',
+    duration: '2025',
+    meta: 'University Internship Matching Portal',
+    status: 'done',
+    statusLabel: 'Completed',
+    previewLabel: 'Internship matches board',
+    previewShots: [],
+    description: 'Engineered a multi-tiered platform matching university students with OJT opportunities, simulating industrial job boards.',
+    highlights: [
+      'Developed an administrative dashboard to monitor application metrics and OJT tracking in real time.',
+      'Created a corporate portal for external companies to manage postings and review candidate profiles.',
+      'Architected secure-coded backend PHP APIs integrated with a MySQL database handling three user access roles.'
+    ],
+    stack: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'MySQL', 'Docker', 'Git']
+  },
+  {
+    name: 'BiteWise Calorie Tracker',
+    duration: '2025',
+    meta: 'Offline Android Diet & Meal Tracking App',
+    status: 'done',
+    statusLabel: 'Completed',
+    previewLabel: 'Daily food logger and calorie progress',
+    previewShots: [],
+    description: 'Built a fully offline Android diet tracking application allowing users to log meals, monitor caloric intake, and view history.',
+    highlights: [
+      'Designed a local SQLite database schema to store and query meal logs and food items completely on-device.',
+      'Structured using modular event-driven programming patterns native to the B4A framework, separating UI from calculation logic.'
+    ],
+    stack: ['Basic4Android (B4A)', 'SQLite']
+  }
+]
+
 
 export const experiences: Experience[] = [
   {
