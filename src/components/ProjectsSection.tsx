@@ -76,7 +76,7 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
           {majorTech.map((tech) => {
             const iconClass = getTechIconClass(tech)
             return iconClass ? (
-              <i key={tech} className={iconClass} title={tech} />
+              <i key={tech} className={`${iconClass} colored`} title={tech} />
             ) : (
               <span key={tech} style={{ fontSize: '10px', fontFamily: 'var(--mono)', color: 'var(--muted)' }}>{tech}</span>
             )

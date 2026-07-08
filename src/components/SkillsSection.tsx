@@ -79,7 +79,7 @@ function SkillCategoryRow({ group }: { group: SkillGroup }) {
                   {icons.length > 0 && (
                     <span className="skill-icons">
                       {icons.map((iconClass) => (
-                        <i key={iconClass} className={iconClass} />
+                        <i key={iconClass} className={`${iconClass} colored`} />
                       ))}
                     </span>
                   )}
@@ -96,7 +96,7 @@ function SkillCategoryRow({ group }: { group: SkillGroup }) {
                   {icons.length > 0 && (
                     <span className="skill-icons">
                       {icons.map((iconClass) => (
-                        <i key={iconClass} className={iconClass} />
+                        <i key={iconClass} className={`${iconClass} colored`} />
                       ))}
                     </span>
                   )}
