@@ -191,7 +191,6 @@ main section + section {
 #about,
 #skills,
 #projects,
-#experience,
 #certs,
 #contact {
   border-top: 1px solid var(--rule);
@@ -624,45 +623,6 @@ main section + section {
   border-color: var(--accent);
 }
 
-.timeline-item {
-  display: grid;
-  grid-template-columns: 130px 1fr;
-  gap: 24px 40px;
-  border-bottom: 1px solid var(--rule);
-  padding: 32px 0;
-}
-
-.timeline-item:first-child {
-  border-top: 1px solid var(--rule);
-}
-
-.timeline-date {
-  padding-top: 4px;
-  color: var(--muted);
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  white-space: nowrap;
-}
-
-.timeline-role {
-  margin-bottom: 4px;
-  color: var(--ink);
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.timeline-org {
-  margin-bottom: 10px;
-  color: var(--accent);
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.timeline-desc {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.75;
-}
 
 .cert-list {
   display: grid;
@@ -909,7 +869,6 @@ main section {
 #about,
 #skills,
 #projects,
-#experience,
 #certs,
 #contact {
   border-top: none;

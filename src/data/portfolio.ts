@@ -29,12 +29,6 @@ export type Project = {
   duration?: string
 }
 
-export type Experience = {
-  date: string
-  role: string
-  organization: string
-  description: string
-}
 
 export type Certification = {
   issuer: string
@@ -53,7 +47,6 @@ export const navItems: NavItem[] = [
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Experience', href: '#experience' },
   { label: 'Certifications', href: '#certs' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -152,29 +145,6 @@ export const projects: Project[] = [
 ]
 
 
-export const experiences: Experience[] = [
-  {
-    date: '2025-Present',
-    role: 'Associate Lead Learner & Volunteer',
-    organization: 'DEVCON Kids Pampanga',
-    description:
-      'Facilitated 2 code camps teaching robotics and programming to young learners using Micro:bit. Attended regional workshops and helped coordinate learning materials for beginner sessions.',
-  },
-  {
-    date: '2025-2026',
-    role: 'Freelance Android Developer',
-    organization: 'Carlos Fitness - San Fernando, Pampanga',
-    description:
-      'Acquired through a Software Engineering course, developed and delivered a commercial dual-app Android solution for a paying gym business from requirements gathering and documentation through to full deployment.',
-  },
-  {
-    date: '2025-Present',
-    role: 'Lead Mobile Developer',
-    organization: 'SANT:IO - DOT Central Luzon Partnership',
-    description:
-      'Building a tourism discovery platform in collaboration with provincial and regional Department of Tourism offices. Responsible for the Flutter mobile app, ML recommendation model, and FastAPI backend infrastructure.',
-  },
-]
 
 export const certifications: Certification[] = [
   {

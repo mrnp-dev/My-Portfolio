@@ -2,7 +2,6 @@ import './App.css'
 import { AboutSection } from './components/AboutSection'
 import { CertificationsSection } from './components/CertificationsSection'
 import { ContactSection } from './components/ContactSection'
-import { ExperienceSection } from './components/ExperienceSection'
 import { HeroSection } from './components/HeroSection'
 import { Navigation } from './components/Navigation'
 import { ProjectsSection } from './components/ProjectsSection'
@@ -11,7 +10,6 @@ import { SkillsSection } from './components/SkillsSection'
 import {
   certifications,
   contactLinks,
-  experiences,
   footerLinks,
   navItems,
   projects,
@@ -35,7 +33,6 @@ function App() {
         <AboutSection />
         <SkillsSection skillGroups={skillGroups} />
         <ProjectsSection projects={projects} />
-        <ExperienceSection experiences={experiences} />
         <CertificationsSection certifications={certifications} />
         <ContactSection links={contactLinks} />
       </main>
