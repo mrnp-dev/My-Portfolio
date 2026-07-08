@@ -28,7 +28,7 @@ export function CertificationsSection({ certifications }: CertificationsSectionP
   return (
     <section id="certs">
       <SectionHeading
-        label="05 - Certifications"
+        label="04 - Certifications"
         title="Continuing education."
         subtitle="Courses and certificates I've completed outside of formal coursework."
       />

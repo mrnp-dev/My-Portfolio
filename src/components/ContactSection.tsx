@@ -9,7 +9,7 @@ type ContactSectionProps = {
 export function ContactSection({ links }: ContactSectionProps) {
   return (
     <section id="contact">
-      <SectionHeading label="06 - Contact" />
+      <SectionHeading label="05 - Contact" />
       <div className="contact-grid">
         <div className="reveal">
           <h2 className="contact-headline">I'm happy to answer your next project. →</h2>
