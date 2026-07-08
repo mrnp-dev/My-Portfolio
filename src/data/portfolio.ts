@@ -9,7 +9,7 @@ import bitewiseScreen3 from '../assets/projects/Bitewise/Screenshot from 2026-07
 import bitewiseScreen4 from '../assets/projects/Bitewise/Screenshot from 2026-07-08 20-19-50.png'
 import bitewiseScreen5 from '../assets/projects/Bitewise/Screenshot from 2026-07-08 20-23-17.png'
 import bitewiseScreen6 from '../assets/projects/Bitewise/Screenshot from 2026-07-08 20-23-35.png'
-import bitewiseVideo from '../assets/projects/Bitewise/Unedited v2.mp4'
+import bitewiseVideo from '../assets/projects/Bitewise/Bitewise.mp4'
 
 import hirenorianScreen1 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-41-38.png'
 import hirenorianScreen2 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-42-02.png'
@@ -17,6 +17,12 @@ import hirenorianScreen3 from '../assets/projects/Hirenorian/Screenshot from 202
 import hirenorianScreen4 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-50-29.png'
 import hirenorianScreen5 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-50-47.png'
 import hirenorianScreen6 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-51-49.png'
+
+import carlosScreen1 from '../assets/projects/Carlos Fitness/Screenshot from 2026-07-08 21-50-21.png'
+import carlosScreen2 from '../assets/projects/Carlos Fitness/Screenshot from 2026-07-08 21-50-48.png'
+import carlosScreen3 from '../assets/projects/Carlos Fitness/Screenshot from 2026-07-08 21-50-57.png'
+import carlosScreen4 from '../assets/projects/Carlos Fitness/Screenshot from 2026-07-08 21-51-03.png'
+import carlosScreen5 from '../assets/projects/Carlos Fitness/Screenshot from 2026-07-08 21-51-07.png'
 
 export type NavItem = {
   label: string
@@ -47,6 +53,7 @@ export type Project = {
   stack: string[]
   duration?: string
   media?: ProjectMedia[]
+  disableCarousel?: boolean
 }
 
 
@@ -113,7 +120,8 @@ export const projects: Project[] = [
       'Designed and built a swipe-based destination recommendation system and a browsable directory with filters.',
       'Constructed a three-platform ecosystem: a Flutter mobile app, a destination management portal for businesses, and a DOT admin dashboard.'
     ],
-    stack: ['Flutter', 'Supabase', 'PostgreSQL', 'Python', 'FastAPI']
+    stack: ['Flutter', 'Supabase', 'PostgreSQL', 'Python', 'FastAPI'],
+    disableCarousel: true,
   },
   {
     name: 'Carlos Fitness Membership System',
@@ -129,7 +137,14 @@ export const projects: Project[] = [
       'Created a companion member-facing app that displays membership status and serves as a digital gym ID.',
       'Implemented a hybrid offline-first database architecture using Firebase Firestore for cloud sync and SQLite for local storage.'
     ],
-    stack: ['Flutter', 'Firebase', 'SQLite', 'Git']
+    stack: ['Flutter', 'Firebase', 'SQLite', 'Git'],
+    media: [
+      { type: 'image', src: carlosScreen1, caption: 'Admin login screen — Guagua Branch' },
+      { type: 'image', src: carlosScreen2, caption: 'Members list & member details panel' },
+      { type: 'image', src: carlosScreen3, caption: 'Membership collections dashboard & analytics' },
+      { type: 'image', src: carlosScreen4, caption: 'Action history log with date filter' },
+      { type: 'image', src: carlosScreen5, caption: 'Promo management — discounts & referrals' },
+    ]
   },
   {
     name: 'Hirenorian',

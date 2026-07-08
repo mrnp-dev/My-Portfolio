@@ -128,7 +128,9 @@ function getPlaceholderSlides(projectName: string): PlaceholderSlide[] {
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const modalRef = useRef<HTMLDivElement>(null)
-  const slideCount = project.media ? project.media.length : getPlaceholderSlides(project.name).length
+  const slideCount = project.disableCarousel
+    ? 0
+    : (project.media ? project.media.length : getPlaceholderSlides(project.name).length)
 
   useEffect(() => {
     document.body.style.overflow = 'hidden'
@@ -170,50 +172,63 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           &times;
         </button>
 
-        {/* Left Side: Carousel */}
+        {/* Left Side: Carousel or locked panel */}
         <div className="project-modal-left">
-          <div className="project-carousel">
-            <button className="project-carousel-nav prev" onClick={prev} aria-label="Previous slide">&#8592;</button>
-
-            <div className="project-carousel-slides">
-              {project.media
-                ? project.media.map((item, index) => (
-                    <MediaSlide key={index} item={item} isActive={index === currentSlide} />
-                  ))
-                : getPlaceholderSlides(project.name).map((slide, index) => (
-                    <div key={index} className={`project-carousel-slide ${index === currentSlide ? 'active' : ''}`}>
-                      <div className="project-carousel-placeholder">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ width: '48px', height: '48px', marginBottom: '16px', opacity: 0.2 }}>
-                          <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
-                          <line x1="7" y1="2" x2="7" y2="22" />
-                          <line x1="17" y1="2" x2="17" y2="22" />
-                          <line x1="2" y1="12" x2="22" y2="12" />
-                        </svg>
-                        <p className="project-carousel-placeholder-label">Coming soon</p>
-                      </div>
-                      <h4 style={{ fontFamily: 'var(--sans)', fontWeight: 500, fontSize: '15px', color: 'var(--ink)', marginTop: '20px', marginBottom: '4px' }}>
-                        {slide.title}
-                      </h4>
-                      <p style={{ fontFamily: 'var(--sans)', fontSize: '13px', color: 'var(--muted)' }}>
-                        {slide.subtitle}
-                      </p>
-                    </div>
-                  ))}
+          {project.disableCarousel ? (
+            <div className="project-carousel-locked">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '40px', height: '40px', marginBottom: '16px', opacity: 0.25 }}>
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+              </svg>
+              <p className="project-carousel-locked-label">Screenshots available on completion</p>
+              <p className="project-carousel-locked-sub">This project is currently in active development.</p>
             </div>
+          ) : (
+            <>
+              <div className="project-carousel">
+                <button className="project-carousel-nav prev" onClick={prev} aria-label="Previous slide">&#8592;</button>
 
-            <button className="project-carousel-nav next" onClick={next} aria-label="Next slide">&#8594;</button>
-          </div>
+                <div className="project-carousel-slides">
+                  {project.media
+                    ? project.media.map((item, index) => (
+                        <MediaSlide key={index} item={item} isActive={index === currentSlide} />
+                      ))
+                    : getPlaceholderSlides(project.name).map((slide, index) => (
+                        <div key={index} className={`project-carousel-slide ${index === currentSlide ? 'active' : ''}`}>
+                          <div className="project-carousel-placeholder">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ width: '48px', height: '48px', marginBottom: '16px', opacity: 0.2 }}>
+                              <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
+                              <line x1="7" y1="2" x2="7" y2="22" />
+                              <line x1="17" y1="2" x2="17" y2="22" />
+                              <line x1="2" y1="12" x2="22" y2="12" />
+                            </svg>
+                            <p className="project-carousel-placeholder-label">Coming soon</p>
+                          </div>
+                          <h4 style={{ fontFamily: 'var(--sans)', fontWeight: 500, fontSize: '15px', color: 'var(--ink)', marginTop: '20px', marginBottom: '4px' }}>
+                            {slide.title}
+                          </h4>
+                          <p style={{ fontFamily: 'var(--sans)', fontSize: '13px', color: 'var(--muted)' }}>
+                            {slide.subtitle}
+                          </p>
+                        </div>
+                      ))}
+                </div>
 
-          <div className="project-carousel-dots">
-            {Array.from({ length: slideCount }).map((_, index) => (
-              <button
-                key={index}
-                className={`project-carousel-dot ${index === currentSlide ? 'active' : ''}`}
-                onClick={() => setCurrentSlide(index)}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
+                <button className="project-carousel-nav next" onClick={next} aria-label="Next slide">&#8594;</button>
+              </div>
+
+              <div className="project-carousel-dots">
+                {Array.from({ length: slideCount }).map((_, index) => (
+                  <button
+                    key={index}
+                    className={`project-carousel-dot ${index === currentSlide ? 'active' : ''}`}
+                    onClick={() => setCurrentSlide(index)}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         {/* Right Side: Details */}
