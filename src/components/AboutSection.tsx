@@ -1,6 +1,10 @@
 import { useEffect, useRef } from 'react'
 import { SectionHeading } from './SectionHeading'
 
+import academicImage from '../assets/about/024015a7-b741-4c3a-8f10-7c31655a9d4d.jpeg'
+import fullstackImage from '../assets/about/0b1ca539-6e55-49f8-a9f7-5e52ea1833c4.jpeg'
+import communityImage from '../assets/about/Screenshot from 2026-07-08 23-06-40.png'
+
 const facts = [
   ['Currently', '4th Year, BSCS'],
   ['University', 'Pampanga State University'],
@@ -9,31 +13,30 @@ const facts = [
 
 const aboutStories = [
   {
-    imageLabel: 'Profile Image',
+    imageLabel: 'Academic & Projects',
+    imageSrc: academicImage,
     text: (
       <p>
-        "I'm Mark, a CS student based in <strong>San Fernando, Pampanga, Philippines</strong>. I build full-stack web
-        applications, cross-platform mobile apps, and machine learning systems, often all three at once."
+        I'm a Computer Science student at <strong>Pampanga State University</strong> passionate about building web and mobile applications. I enjoy working on projects that solve meaningful problems in my community.
       </p>
     ),
   },
   {
-    imageLabel: 'Client Work',
+    imageLabel: 'Full-Stack Scope',
+    imageSrc: fullstackImage,
     reverse: true,
     text: (
       <p>
-        "What sets me apart is that I've shipped <strong>real software for real clients</strong> while still in school.
-        From a commercial Android gym management app to a tourism platform built in partnership with the{' '}
-        <strong>Department of Tourism</strong>, my projects go beyond coursework."
+        I work across the full stack, from <strong>Flutter</strong> and <strong>PHP</strong> to <strong>PostgreSQL</strong> and <strong>Docker</strong>. I love exploring different technologies and finding the right tools for each project.
       </p>
     ),
   },
   {
-    imageLabel: 'Community Work',
+    imageLabel: 'Community & Outreach',
+    imageSrc: communityImage,
     text: (
       <p>
-        "Outside of code I volunteer with <strong>DEVCON Kids Pampanga</strong>, teaching robotics and programming to
-        young learners because the best way to solidify what you know is to teach it."
+        Outside of coding, I volunteer with <strong>DEVCON Kids Pampanga</strong> where I help facilitate code camps teaching robotics and programming to young learners using <strong>Micro:bit</strong>.
       </p>
     ),
   },
@@ -77,7 +80,11 @@ export function AboutSection() {
             >
               <div className="about-story-copy">{story.text}</div>
               <div className="about-story-visual" aria-hidden="true">
-                <div className="photo-placeholder">{story.imageLabel}</div>
+                <img
+                  src={story.imageSrc}
+                  alt={story.imageLabel}
+                  className="about-story-image"
+                />
               </div>
             </article>
           ))}

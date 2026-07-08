@@ -1626,6 +1626,16 @@ body.modal-open {
   min-height: 280px;
 }
 
+.about-story-image {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(10%) contrast(102%);
+  border: 1px solid var(--rule);
+}
+
+
 @media (max-width: 760px) {
   .about-stories {
     gap: 72px;

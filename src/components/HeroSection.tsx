@@ -2,7 +2,7 @@ import professionalImage from '../assets/Professional2.png'
 import { useTypewriter } from '../hooks/useTypewriter'
 import { TypewriterRichText } from './TypewriterRichText'
 
-const heroTitle = "Hi, I'm\nMark Rey Nino."
+const heroTitle = "Hi, I'm\nMark Rey Niño."
 const heroIntroSegments = [
   { text: 'A ' },
   { text: '4th-year Computer Science student', strong: true },
