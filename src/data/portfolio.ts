@@ -11,6 +11,13 @@ import bitewiseScreen5 from '../assets/projects/Bitewise/Screenshot from 2026-07
 import bitewiseScreen6 from '../assets/projects/Bitewise/Screenshot from 2026-07-08 20-23-35.png'
 import bitewiseVideo from '../assets/projects/Bitewise/Unedited v2.mp4'
 
+import hirenorianScreen1 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-41-38.png'
+import hirenorianScreen2 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-42-02.png'
+import hirenorianScreen3 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-42-47.png'
+import hirenorianScreen4 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-50-29.png'
+import hirenorianScreen5 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-50-47.png'
+import hirenorianScreen6 from '../assets/projects/Hirenorian/Screenshot from 2026-07-08 20-51-49.png'
+
 export type NavItem = {
   label: string
   href: `#${string}`
@@ -138,7 +145,15 @@ export const projects: Project[] = [
       'Created a corporate portal for external companies to manage postings and review candidate profiles.',
       'Architected secure-coded backend PHP APIs integrated with a MySQL database handling three user access roles.'
     ],
-    stack: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'MySQL', 'Docker', 'Git']
+    stack: ['HTML', 'CSS', 'JavaScript', 'Tailwind CSS', 'PHP', 'MySQL', 'Docker', 'Git'],
+    media: [
+      { type: 'image', src: hirenorianScreen1, caption: 'Home / landing page' },
+      { type: 'image', src: hirenorianScreen2, caption: 'Latest news & announcements feed' },
+      { type: 'image', src: hirenorianScreen3, caption: 'Recommended jobs matching student profile' },
+      { type: 'image', src: hirenorianScreen4, caption: 'Job details & application modal' },
+      { type: 'image', src: hirenorianScreen5, caption: 'Company profile details page' },
+      { type: 'image', src: hirenorianScreen6, caption: 'Student profile & verification dashboard' },
+    ]
   },
   {
     name: 'BiteWise Calorie Tracker',
