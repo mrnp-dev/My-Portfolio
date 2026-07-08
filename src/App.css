@@ -1399,3 +1399,22 @@ body.modal-open {
     animation: none;
   }
 }
+
+.hero-typewriter {
+  white-space: pre-line;
+}
+
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 4px;
+  background: var(--accent);
+  vertical-align: -0.08em;
+  animation: blink 1.1s step-end infinite;
+}
+
+.hero-typing-cursor {
+  height: 0.82em;
+  width: 3px;
+}
