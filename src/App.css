@@ -2215,6 +2215,29 @@ body.modal-open {
   color: var(--muted);
 }
 
+.project-carousel-media {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #f0f0ed;
+  min-height: 0;
+}
+
+.project-carousel-caption {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  text-align: center;
+  padding: 12px 20px;
+  background: var(--bg);
+  border-top: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+
 .project-carousel-nav {
   position: absolute;
   top: 50%;

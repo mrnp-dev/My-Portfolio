@@ -3,6 +3,14 @@ import aiReadyCertificatePageTwo from '../assets/certs/AICLASSASEAN - AI Trainin
 import devconCertificateImage from '../assets/certs/DEVCON Kids - Lead Learners Workshop Certificate of Completion/DEVCON Kids - Lead Learners Workshop Certificate of Completion-1.png'
 import pythonCertificateImage from '../assets/certs/Simplilearn - Python Cerficate of Completion/Simplilearn - Python Cerficate of Completion-1.png'
 
+import bitewiseScreen1 from '../assets/projects/Bitewise/Screenshot from 2026-07-08 20-18-21.png'
+import bitewiseScreen2 from '../assets/projects/Bitewise/Screenshot from 2026-07-08 20-18-41.png'
+import bitewiseScreen3 from '../assets/projects/Bitewise/Screenshot from 2026-07-08 20-19-12.png'
+import bitewiseScreen4 from '../assets/projects/Bitewise/Screenshot from 2026-07-08 20-19-50.png'
+import bitewiseScreen5 from '../assets/projects/Bitewise/Screenshot from 2026-07-08 20-23-17.png'
+import bitewiseScreen6 from '../assets/projects/Bitewise/Screenshot from 2026-07-08 20-23-35.png'
+import bitewiseVideo from '../assets/projects/Bitewise/Unedited v2.mp4'
+
 export type NavItem = {
   label: string
   href: `#${string}`
@@ -16,6 +24,10 @@ export type SkillGroup = {
 
 export type ProjectStatus = 'wip' | 'done'
 
+export type ProjectMedia =
+  | { type: 'image'; src: string; caption: string }
+  | { type: 'video'; src: string; caption: string }
+
 export type Project = {
   name: string
   meta: string
@@ -27,6 +39,7 @@ export type Project = {
   highlights: string[]
   stack: string[]
   duration?: string
+  media?: ProjectMedia[]
 }
 
 
@@ -140,7 +153,16 @@ export const projects: Project[] = [
       'Designed a local SQLite database schema to store and query meal logs and food items completely on-device.',
       'Structured using modular event-driven programming patterns native to the B4A framework, separating UI from calculation logic.'
     ],
-    stack: ['Basic4Android (B4A)', 'SQLite']
+    stack: ['Basic4Android (B4A)', 'SQLite'],
+    media: [
+      { type: 'video', src: bitewiseVideo, caption: 'App walkthrough demo' },
+      { type: 'image', src: bitewiseScreen1, caption: 'Welcome & sign-in screen' },
+      { type: 'image', src: bitewiseScreen2, caption: 'Activity level onboarding' },
+      { type: 'image', src: bitewiseScreen3, caption: 'Dashboard — calorie & macro overview' },
+      { type: 'image', src: bitewiseScreen4, caption: 'Food search & logging' },
+      { type: 'image', src: bitewiseScreen5, caption: 'Recipe search results' },
+      { type: 'image', src: bitewiseScreen6, caption: 'Recipes list — Add to Log' },
+    ]
   }
 ]
 

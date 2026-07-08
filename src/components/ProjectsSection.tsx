@@ -88,63 +88,59 @@ function ProjectCard({ project, onClick }: { project: Project; onClick: () => vo
   )
 }
 
-type SlideInfo = {
+import type { ProjectMedia } from '../data/portfolio'
+
+type PlaceholderSlide = {
   title: string
   subtitle: string
-  icon: string
 }
 
-function getProjectSlides(projectName: string): SlideInfo[] {
+function getPlaceholderSlides(projectName: string): PlaceholderSlide[] {
   const name = projectName.toLowerCase()
   if (name.includes('sant:io')) {
     return [
-      { title: 'Swipe Discovery Screen', subtitle: 'Interactive swiping interface for local tourist spots', icon: 'compass' },
-      { title: 'Central Luzon Directory', subtitle: 'Browsable and filterable tourism listings', icon: 'map' },
-      { title: 'Itinerary Generator', subtitle: 'AI-assisted routing and planning tool', icon: 'calendar' }
+      { title: 'Swipe Discovery Screen', subtitle: 'Interactive swiping interface for local tourist spots' },
+      { title: 'Central Luzon Directory', subtitle: 'Browsable and filterable tourism listings' },
+      { title: 'Itinerary Generator', subtitle: 'AI-assisted routing and planning tool' },
     ]
   }
   if (name.includes('carlos fitness')) {
     return [
-      { title: 'Staff Admin Panel', subtitle: 'Gym membership management & CRUD interface', icon: 'users' },
-      { title: 'Member Mobile Companion', subtitle: 'Personal workout profile and digital gym ID', icon: 'smartphone' },
-      { title: 'Offline-First Sync Status', subtitle: 'Local SQLite data syncing seamlessly with Firebase', icon: 'wifi-off' }
+      { title: 'Staff Admin Panel', subtitle: 'Gym membership management & CRUD interface' },
+      { title: 'Member Mobile Companion', subtitle: 'Personal workout profile and digital gym ID' },
+      { title: 'Offline-First Sync Status', subtitle: 'Local SQLite data syncing seamlessly with Firebase' },
     ]
   }
   if (name.includes('hirenorian')) {
     return [
-      { title: 'Student Matching Dashboard', subtitle: 'OJT recommendation feed and search boards', icon: 'briefcase' },
-      { title: 'University Oversight Portal', subtitle: 'Internship progress statistics and analytics', icon: 'trending-up' },
-      { title: 'Employer Job Creator', subtitle: 'Company job description builder & application manager', icon: 'edit-3' }
+      { title: 'Student Matching Dashboard', subtitle: 'OJT recommendation feed and search boards' },
+      { title: 'University Oversight Portal', subtitle: 'Internship progress statistics and analytics' },
+      { title: 'Employer Job Creator', subtitle: 'Company job description builder & application manager' },
     ]
   }
   return [
-    { title: 'Caloric Intake Logger', subtitle: 'Quick meal logging & macronutrient summary tracker', icon: 'activity' },
-    { title: 'Offline Food Directory', subtitle: 'On-device SQLite search database of foods', icon: 'search' },
-    { title: 'Consumption History Analytics', subtitle: 'Weekly and monthly caloric consumption trends', icon: 'bar-chart-2' }
+    { title: 'App Overview', subtitle: 'Core user interface and navigation' },
+    { title: 'Key Features', subtitle: 'Primary functionality and workflow' },
+    { title: 'Data & Storage', subtitle: 'Offline-first database and local storage' },
   ]
 }
 
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const [currentSlide, setCurrentSlide] = useState(0)
-  const slides = getProjectSlides(project.name)
   const modalRef = useRef<HTMLDivElement>(null)
+  const slideCount = project.media ? project.media.length : getPlaceholderSlides(project.name).length
 
   useEffect(() => {
-    // Lock background scroll
     document.body.style.overflow = 'hidden'
-    
-    // Focus modal container
-    if (modalRef.current) {
-      modalRef.current.focus()
-    }
+    if (modalRef.current) modalRef.current.focus()
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         onClose()
       } else if (e.key === 'ArrowLeft') {
-        setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))
+        setCurrentSlide((prev) => (prev === 0 ? slideCount - 1 : prev - 1))
       } else if (e.key === 'ArrowRight') {
-        setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1))
+        setCurrentSlide((prev) => (prev === slideCount - 1 ? 0 : prev + 1))
       }
     }
 
@@ -153,83 +149,65 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
       document.body.style.overflow = ''
       window.removeEventListener('keydown', handleKeyDown)
     }
-  }, [onClose, slides.length])
+  }, [onClose, slideCount])
 
   const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) {
-      onClose()
-    }
+    if (e.target === e.currentTarget) onClose()
   }
+
+  const prev = () => setCurrentSlide((p) => (p === 0 ? slideCount - 1 : p - 1))
+  const next = () => setCurrentSlide((p) => (p === slideCount - 1 ? 0 : p + 1))
 
   return (
     <div className="project-modal-backdrop" onClick={handleBackdropClick} role="dialog" aria-modal="true">
-      <div 
-        className="project-modal-content" 
+      <div
+        className="project-modal-content"
         ref={modalRef}
         tabIndex={-1}
         style={{ outline: 'none' }}
       >
-        <button 
-          className="project-modal-close" 
-          onClick={onClose} 
-          aria-label="Close modal"
-        >
+        <button className="project-modal-close" onClick={onClose} aria-label="Close modal">
           &times;
         </button>
-        
+
         {/* Left Side: Carousel */}
         <div className="project-modal-left">
           <div className="project-carousel">
-            <button 
-              className="project-carousel-nav prev" 
-              onClick={() => setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1))}
-              aria-label="Previous slide"
-            >
-              &#8592;
-            </button>
-            
+            <button className="project-carousel-nav prev" onClick={prev} aria-label="Previous slide">&#8592;</button>
+
             <div className="project-carousel-slides">
-              {slides.map((slide, index) => (
-                <div 
-                  key={index} 
-                  className={`project-carousel-slide ${index === currentSlide ? 'active' : ''}`}
-                >
-                  <div className="project-carousel-placeholder">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ width: '48px', height: '48px', marginBottom: '16px', opacity: 0.2 }}>
-                      <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
-                      <line x1="7" y1="2" x2="7" y2="22" />
-                      <line x1="17" y1="2" x2="17" y2="22" />
-                      <line x1="2" y1="12" x2="22" y2="12" />
-                      <line x1="2" y1="7" x2="7" y2="7" />
-                      <line x1="2" y1="17" x2="7" y2="17" />
-                      <line x1="17" y1="17" x2="22" y2="17" />
-                      <line x1="17" y1="7" x2="22" y2="7" />
-                    </svg>
-                    <p className="project-carousel-placeholder-label">Mock Screenshot Slide {index + 1}</p>
-                  </div>
-                  <h4 style={{ fontFamily: 'var(--sans)', fontWeight: 500, fontSize: '15px', color: 'var(--ink)', marginTop: '20px', marginBottom: '4px' }}>
-                    {slide.title}
-                  </h4>
-                  <p style={{ fontFamily: 'var(--sans)', fontSize: '13px', color: 'var(--muted)' }}>
-                    {slide.subtitle}
-                  </p>
-                </div>
-              ))}
+              {project.media
+                ? project.media.map((item, index) => (
+                    <MediaSlide key={index} item={item} isActive={index === currentSlide} />
+                  ))
+                : getPlaceholderSlides(project.name).map((slide, index) => (
+                    <div key={index} className={`project-carousel-slide ${index === currentSlide ? 'active' : ''}`}>
+                      <div className="project-carousel-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ width: '48px', height: '48px', marginBottom: '16px', opacity: 0.2 }}>
+                          <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18" />
+                          <line x1="7" y1="2" x2="7" y2="22" />
+                          <line x1="17" y1="2" x2="17" y2="22" />
+                          <line x1="2" y1="12" x2="22" y2="12" />
+                        </svg>
+                        <p className="project-carousel-placeholder-label">Coming soon</p>
+                      </div>
+                      <h4 style={{ fontFamily: 'var(--sans)', fontWeight: 500, fontSize: '15px', color: 'var(--ink)', marginTop: '20px', marginBottom: '4px' }}>
+                        {slide.title}
+                      </h4>
+                      <p style={{ fontFamily: 'var(--sans)', fontSize: '13px', color: 'var(--muted)' }}>
+                        {slide.subtitle}
+                      </p>
+                    </div>
+                  ))}
             </div>
 
-            <button 
-              className="project-carousel-nav next" 
-              onClick={() => setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1))}
-              aria-label="Next slide"
-            >
-              &#8594;
-            </button>
+            <button className="project-carousel-nav next" onClick={next} aria-label="Next slide">&#8594;</button>
           </div>
-          
+
           <div className="project-carousel-dots">
-            {slides.map((_, index) => (
-              <button 
-                key={index} 
+            {Array.from({ length: slideCount }).map((_, index) => (
+              <button
+                key={index}
                 className={`project-carousel-dot ${index === currentSlide ? 'active' : ''}`}
                 onClick={() => setCurrentSlide(index)}
                 aria-label={`Go to slide ${index + 1}`}
@@ -250,11 +228,9 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               {project.meta}
             </p>
           </div>
-          
-          <div className="project-modal-desc">
-            {project.description}
-          </div>
-          
+
+          <div className="project-modal-desc">{project.description}</div>
+
           <div className="project-modal-section-title">Key Accomplishments</div>
           <ul className="project-modal-highlights">
             {project.highlights.map((highlight, index) => (
@@ -265,13 +241,38 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           <div className="project-modal-section-title">Complete Stack</div>
           <div className="project-modal-tags">
             {project.stack.map((tech) => (
-              <span key={tech} className="project-tag">
-                {tech}
-              </span>
+              <span key={tech} className="project-tag">{tech}</span>
             ))}
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+function MediaSlide({ item, isActive }: { item: ProjectMedia; isActive: boolean }) {
+  return (
+    <div className={`project-carousel-slide ${isActive ? 'active' : ''}`}>
+      <div className="project-carousel-media">
+        {item.type === 'video' ? (
+          <video
+            src={item.src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            controls
+            style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#111' }}
+          />
+        ) : (
+          <img
+            src={item.src}
+            alt={item.caption}
+            style={{ width: '100%', height: '100%', objectFit: 'contain', background: '#f0f0ed' }}
+          />
+        )}
+      </div>
+      <p className="project-carousel-caption">{item.caption}</p>
     </div>
   )
 }
