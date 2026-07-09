@@ -55,7 +55,6 @@ export function HeroSection() {
           <img className="hero-portrait" src={professionalImage} alt="" />
         </div>
       </div>
-      
     </section>
   )
 }

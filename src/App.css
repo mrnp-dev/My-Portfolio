@@ -2445,3 +2445,53 @@ body.modal-open {
   }
 }
 
+
+/* Navbar CV action */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-cv-link {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-cv-link:hover,
+.nav-cv-link:focus-visible {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 760px) {
+  .nav-menu {
+    max-width: 74vw;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 12px 16px;
+  }
+
+  .nav-links {
+    max-width: none;
+  }
+
+  .nav-cv-link {
+    min-height: 32px;
+    padding: 0 12px;
+    font-size: 11px;
+  }
+}

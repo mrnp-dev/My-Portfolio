@@ -1,3 +1,4 @@
+import cvFile from '../Pascual, Mark Rey Nino - CV.pdf'
 import type { NavItem } from '../data/portfolio'
 
 type NavigationProps = {
@@ -12,15 +13,20 @@ export function Navigation({ activeSection, isScrolled, items }: NavigationProps
       <a href="#hero" className="nav-logo" aria-label="Back to top">
         mrnp.
       </a>
-      <ul className="nav-links">
-        {items.map((item) => (
-          <li key={item.href}>
-            <a className={activeSection === getSectionId(item.href) ? 'active' : ''} href={item.href}>
-              {item.label}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <div className="nav-menu">
+        <ul className="nav-links">
+          {items.map((item) => (
+            <li key={item.href}>
+              <a className={activeSection === getSectionId(item.href) ? 'active' : ''} href={item.href}>
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a className="nav-cv-link" href={cvFile} rel="noreferrer" target="_blank">
+          View CV
+        </a>
+      </div>
     </nav>
   )
 }
